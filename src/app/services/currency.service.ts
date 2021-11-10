@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 // import { CSVRecord } from '../modules/admin/pages/add-data/add-data.component';
@@ -21,6 +21,14 @@ export class CurrencyService {
 
   getGroupAll(){
     return this.http.get(URLpath + 'getgroupall/');
+  };
+
+  sendLetter(Letter: string, mails: string[] ){
+    debugger;
+    return this.http.post(URLpath + "sendletter", {//
+      Letter, mails}, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    });
   };
 
 
