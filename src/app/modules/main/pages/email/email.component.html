@@ -1,4 +1,7 @@
 <div style="text-align: center;">
   <h1>Write your message text</h1>
 </div>
-<textarea name="comment" cols="40" rows="5"></textarea>
+<textarea name="comment" cols="40" rows="5" [(ngModel)]="constantsService.textMessage"></textarea>
+<br>
+<button mat-dialog-close>Send</button>
+<button mat-dialog-close (click)="send()">Cancellation</button>

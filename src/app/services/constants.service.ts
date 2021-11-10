@@ -17,5 +17,7 @@ export interface Group{
 export class ConstantsService {
   user: User | undefined;
   users: User[] | undefined;
+  public textMessage: string ="";
+  public isSend:boolean = false;
   constructor() { }
 }

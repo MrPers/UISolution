@@ -6,25 +6,26 @@ import { MainComponent } from './main.component';
 import { AdminRoutingModule } from './main-routing.module';
 import { TableComponent } from './pages/table/table.component';
 import { EmailComponent } from './pages/email/email.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     MainComponent,
     EmailComponent,
-    TableComponent,
+    TableComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
     AdminRoutingModule,
-    MatDialog,
+    MatDialogModule
   ],
   providers: [
     CurrencyService,
-    ConstantsService
+    ConstantsService,
   ],
   bootstrap: [MainComponent]
 })
-// export class MainModule { }
+
+export class MainModule { }

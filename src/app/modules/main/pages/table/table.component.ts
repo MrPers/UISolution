@@ -1,4 +1,4 @@
-import { Group } from './../../../../services/constants.service';
+import { ConstantsService, Group } from './../../../../services/constants.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/services/constants.service';
 import { CurrencyService } from 'src/app/services/currency.service';
@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { EmailComponent } from '../email/email.component';
 
 let idGroup: number = 0;
+// let textMessage: String ="";
 
 @Component({
   selector: 'app-table',
@@ -19,7 +20,8 @@ export class TableComponent implements OnInit {
   users! : User[];
   groups! : Group[];
 
-  constructor(public dialog: MatDialog, private currencyService:CurrencyService ){}
+  // constructor(public dialog: MatDialog, public emailComponent: EmailComponent, private currencyService:CurrencyService){}
+  constructor(public dialog: MatDialog, public constantsService: ConstantsService, private currencyService:CurrencyService){}
 
   ngOnInit(): void {
     this.onDisplayUsers(idGroup);
@@ -60,17 +62,26 @@ export class TableComponent implements OnInit {
     });
   }
 
-  sendlettertoeveryone(){
+  sendLetterToEveryone(){
     debugger;
     this.users;
   }
 
+  sendLetterToId(user:User){
+    this.dialog.open(EmailComponent)
+    .afterClosed().subscribe(result => {
 
-  sendlettertoid(user:User){
-    // debugger;
-    const dialogRef = this.dialog.open(EmailComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log({result});
+      // this.constantsService.isSend;
+      // this.constantsService.textMessage;
+
+      if(this.constantsService.isSend == true){
+        // let time : string[] = [user.email];
+        this.currencyService.sendLetter(this.constantsService.textMessage, [user.email])
+        .subscribe((result : any) => {
+          debugger;
+
+        });
+      }
     });
   }
 

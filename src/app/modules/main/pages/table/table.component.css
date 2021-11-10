@@ -25,6 +25,7 @@ th {
 .table-scroll {
   height:150px;
   overflow:auto;
+  min-width: 150px;
 }
 
 button {
