@@ -1,0 +1,37 @@
+
+* {
+  font: 12pt sans-serif;
+}
+
+table{
+  width: 100%;
+}
+
+.table-user {
+  background: black;
+  border-spacing: 1px;
+}
+
+.table-user td, .table-user th {
+  background: white;
+  padding: 5px;
+  text-align:  center;
+}
+
+th {
+  vertical-align: top;
+}
+
+.table-scroll {
+  height:150px;
+  overflow:auto;
+}
+
+button {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
+}
+

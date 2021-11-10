@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th >
+      <div class="table-scroll">
+        <button (click)="groupEditing()">Group editing</button>
+        <table>
+          <tr *ngFor="let group of groups">
+            <td><button (click)="groupSelection(group.id)">{{group.name}}</button></td>
+          </tr>
+        </table>
+      </div>
+    </th>
+    <th>
+      <h1>To send a message, click on the user's letter, if everyone immediately clicks on the header</h1>
+      <div class="table-user">
+        <table >
+          <tr><th>Name</th><th>Surname</th><th><button (click)="sendlettertoeveryone()" >Email</button></th><th>Interaction</th></tr>
+          <tr *ngFor="let user of users">
+            <td>{{user.name}}</td><td>{{user.surname}}</td><td><button (click)="sendlettertoid(user)" >{{user.email}}</button></td><td><button (click)="userEditing(user.id)" >User editing</button></td>
+          </tr>
+        </table>
+      </div>
+    </th>
+  </tr>
+</table>
