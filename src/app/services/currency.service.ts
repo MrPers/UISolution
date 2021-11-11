@@ -23,17 +23,15 @@ export class CurrencyService {
     return this.http.get(URLpath + 'getgroupall/');
   };
 
-  sendLetter(letter: string, users: User[] ){
-    // let formData = new FormData();
-    // formData.append("letter", letter);
-    // formData.append("mails[]", mails[0].id);
-    // for (let index = 0; index < mails.length; index++) {
-    //   formData.append("mails[]", mails[index]);
-    // }
-    // return this.http.post(URLpath + "sendletter", formData);
+  statusLetter(){
+    return this.http.get(URLpath + 'statusletter/');
+  };
+
+  sendLetter(textBody: string, textSubject: string, users: User[] ){
 
     let rt: MailLetter = {
-      textLetter: letter,
+      textBody: textBody,
+      textSubject: textSubject,
       users: users
     };
     return this.http.post(URLpath + 'sendletter', rt, {
@@ -43,3 +41,10 @@ export class CurrencyService {
 }
 
 
+    // let formData = new FormData();
+    // formData.append("letter", letter);
+    // formData.append("mails[]", mails[0].id);
+    // for (let index = 0; index < mails.length; index++) {
+    //   formData.append("mails[]", mails[index]);
+    // }
+    // return this.http.post(URLpath + "sendletter", formData);

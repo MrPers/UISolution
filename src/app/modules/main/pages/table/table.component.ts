@@ -4,6 +4,7 @@ import { User } from 'src/app/services/constants.service';
 import { CurrencyService } from 'src/app/services/currency.service';
 import {MatDialog} from '@angular/material/dialog';
 import { EmailComponent } from '../email/email.component';
+import { ProgresComponent } from '../progres/progres.component';
 
 let idGroup: number = 0;
 // let textMessage: String ="";
@@ -20,7 +21,6 @@ export class TableComponent implements OnInit {
   users!: User[];
   groups! : Group[];
 
-  // constructor(public dialog: MatDialog, public emailComponent: EmailComponent, private currencyService:CurrencyService){}
   constructor(public dialog: MatDialog, public constantsService: ConstantsService, private currencyService:CurrencyService){}
 
   ngOnInit(): void {
@@ -63,32 +63,30 @@ export class TableComponent implements OnInit {
   }
 
   sendLetterToEveryone(){
-    this.users;
-    this.dialog.open(EmailComponent)
-    .afterClosed().subscribe(result => {
-      if(this.constantsService.isSend == true){
-        // let time : string[]=[];
-        // for (let index = 0; index < this.users.length; index++) {
-        //   time[index] = this.users[index].email;
-        // }
-        this.currencyService.sendLetter(this.constantsService.textMessage, this.users)
-        .subscribe((result : any) => {
-          this.constantsService.textMessage = "";
-          this.constantsService.isSend = false;
-        });
-      }
-    });
+    this.sendLetter(this.users);
   }
 
   sendLetterToId(user:User){
+    this.sendLetter([user]);
+  }
+
+  sendLetter(users:User[]){
     this.dialog.open(EmailComponent)
     .afterClosed().subscribe(result => {
       if(this.constantsService.isSend == true){
-        // let time : string[] = [user.email];
-        this.currencyService.sendLetter(this.constantsService.textMessage, [user])
+        this.currencyService.sendLetter(this.constantsService.textBody, this.constantsService.textSubject, users)
         .subscribe((result : any) => {
-
         });
+
+        this.constantsService.textBody = "";
+        this.constantsService.textSubject = "";
+        this.constantsService.isSend = false;
+        setTimeout(()=>this.dialog.open(ProgresComponent), 500);
+        // this.dialog.open(ProgresComponent);
+        // debugger;
+        // if(users.length > 1){
+        //   setTimeout(this.dialog.open, 500, ProgresComponent);
+        // }
       }
     });
   }

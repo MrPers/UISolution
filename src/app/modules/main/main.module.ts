@@ -8,18 +8,24 @@ import { TableComponent } from './pages/table/table.component';
 import { EmailComponent } from './pages/email/email.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ProgresComponent } from './pages/progres/progres.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     EmailComponent,
-    TableComponent
+    TableComponent,
+    ProgresComponent
   ],
   imports: [
     FormsModule,
     CommonModule,
     AdminRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [
     CurrencyService,

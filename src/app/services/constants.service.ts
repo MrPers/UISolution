@@ -15,14 +15,16 @@ export interface Group{
 }
 
 export interface MailLetter{
-  textLetter:string;
+  textBody: string;
+  textSubject: string;
   users:User[];
 }
 
 export class ConstantsService {
   user: User | undefined;
   users: User[] | undefined;
-  public textMessage: string ="";
+  public textBody: string = "";
+  public textSubject: string = "";
   public isSend:boolean = false;
   constructor() { }
 }
