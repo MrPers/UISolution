@@ -17,7 +17,7 @@ let idGroup: number = 0;
 
 export class TableComponent implements OnInit {
 
-  users! : User[];
+  users!: User[];
   groups! : Group[];
 
   // constructor(public dialog: MatDialog, public emailComponent: EmailComponent, private currencyService:CurrencyService){}
@@ -63,22 +63,30 @@ export class TableComponent implements OnInit {
   }
 
   sendLetterToEveryone(){
-    debugger;
     this.users;
+    this.dialog.open(EmailComponent)
+    .afterClosed().subscribe(result => {
+      if(this.constantsService.isSend == true){
+        // let time : string[]=[];
+        // for (let index = 0; index < this.users.length; index++) {
+        //   time[index] = this.users[index].email;
+        // }
+        this.currencyService.sendLetter(this.constantsService.textMessage, this.users)
+        .subscribe((result : any) => {
+          this.constantsService.textMessage = "";
+          this.constantsService.isSend = false;
+        });
+      }
+    });
   }
 
   sendLetterToId(user:User){
     this.dialog.open(EmailComponent)
     .afterClosed().subscribe(result => {
-
-      // this.constantsService.isSend;
-      // this.constantsService.textMessage;
-
       if(this.constantsService.isSend == true){
         // let time : string[] = [user.email];
-        this.currencyService.sendLetter(this.constantsService.textMessage, [user.email])
+        this.currencyService.sendLetter(this.constantsService.textMessage, [user])
         .subscribe((result : any) => {
-          debugger;
 
         });
       }

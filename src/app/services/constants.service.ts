@@ -14,6 +14,11 @@ export interface Group{
   name:string;
 }
 
+export interface MailLetter{
+  textLetter:string;
+  users:User[];
+}
+
 export class ConstantsService {
   user: User | undefined;
   users: User[] | undefined;
