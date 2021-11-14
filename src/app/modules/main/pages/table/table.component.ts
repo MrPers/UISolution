@@ -5,6 +5,8 @@ import { CurrencyService } from 'src/app/services/currency.service';
 import {MatDialog} from '@angular/material/dialog';
 import { EmailComponent } from '../email/email.component';
 import { ProgresComponent } from '../progres/progres.component';
+import { CreationUpdateUserComponent } from '../creation-update/creation-updateuser.component';
+import { HistoryLetteComponent } from '../history-lette/history-lette.component';
 
 let idGroup: number = 0;
 // let textMessage: String ="";
@@ -20,6 +22,7 @@ export class TableComponent implements OnInit {
 
   users!: User[];
   groups! : Group[];
+  groupId! : number;
 
   constructor(public dialog: MatDialog, public constantsService: ConstantsService, private currencyService:CurrencyService){}
 
@@ -30,8 +33,8 @@ export class TableComponent implements OnInit {
 
   onDisplayUsers(id:number) {
     this.users =[];
-
-    this.currencyService.getUser(id)
+    this.groupId = id;
+    this.currencyService.getUsers(id)
     .subscribe((result : any) => {
       for (let item of result) {
         this.users.push({
@@ -81,12 +84,10 @@ export class TableComponent implements OnInit {
         this.constantsService.textBody = "";
         this.constantsService.textSubject = "";
         this.constantsService.isSend = false;
-        setTimeout(()=>this.dialog.open(ProgresComponent), 500);
-        // this.dialog.open(ProgresComponent);
-        // debugger;
-        // if(users.length > 1){
-        //   setTimeout(this.dialog.open, 500, ProgresComponent);
-        // }
+
+        if(users.length > 1){
+          setTimeout(()=>this.dialog.open(ProgresComponent), 500);
+        }
       }
     });
   }
@@ -97,7 +98,73 @@ export class TableComponent implements OnInit {
     idGroup = id;
   }
 
-  userEditing(id:number){
+  userDelete(id:number = 0){
+    this.currencyService.deleteUser(id)
+    .subscribe((result : any) => {
+      this.onDisplayUsers(this.groupId);
+    });
+  }
+
+  userAdd(){
+    this.dialog.open(CreationUpdateUserComponent)
+    .afterClosed().subscribe(result => {
+      this.currencyService.addUser(this.constantsService.user)
+      .subscribe((result : any) => {
+        this.onDisplayUsers(this.groupId);
+      });
+      this.constantsService.user = new User();
+    });
+
+  }
+
+  userEditing(user:User){
+    this.constantsService.user = user;
+    this.dialog.open(CreationUpdateUserComponent)
+    .afterClosed().subscribe(result => {
+      this.currencyService.updateUser(this.constantsService.user)
+      .subscribe((result : any) => {
+        this.onDisplayUsers(this.groupId);
+      });
+
+      this.constantsService.isSend = false;
+      this.constantsService.user = new User();
+    });
+
+  }
+
+  viewHistory(user:User){
+    // this.constantsService.user = user;
+    this.currencyService.getHistoryLette(user)
+    .subscribe((result : any) => {
+      for (let item of result) {
+        this.constantsService.dispatchs.push({
+          id: 1,
+          departureDate: (item.departureDate).split('T')[0]+ ' ' +((item.departureDate).split('T')[1]).split('.')[0],
+          // departureDate: new Date ((item.departureDate).split('T')[0]+ ' ' +((item.departureDate).split('T')[1]).split('.')[0]),
+          status: item.status,
+          UserId: 1
+        });
+      };
+
+      // for (var i = (this.currentPage - 1)* 10; i < result.; i++) {
+      //   this.allResultData.push({
+      //     position: this.resultData[i].position,
+      //     buy: this.resultData[i].buy,
+      //     sale: this.resultData[i].sale,
+      //     data: this.resultData[i].data
+      //   });
+      // };
+    });
+    this.dialog.open(HistoryLetteComponent)
+    .afterClosed().subscribe(result => {
+      // this.currencyService.updateUser(this.constantsService.user)
+      // .subscribe((result : any) => {
+      //   this.onDisplayUsers(this.groupId);
+      // });
+
+      // this.constantsService.user = new User();
+
+    });
 
   }
 

@@ -2,16 +2,23 @@ import { Injectable } from '@angular/core';
 
 export const URLpath = "https://localhost:44354/api/";
 
-export interface User{
-  id:number;
-  name:string;
-  surname:string;
-  email:string;
+export class User{
+  id:number = 0;
+  name:string = "";
+  surname:string = "";
+  email:string = "";
 }
 
-export interface Group{
-  id:number;
-  name:string;
+export class Dispatch{
+  id: number | undefined;
+  departureDate: any;
+  status: boolean = false;
+  UserId: number | undefined;
+}
+
+export class Group{
+  id:number = 0;
+  name:string = "";
 }
 
 export interface MailLetter{
@@ -21,8 +28,8 @@ export interface MailLetter{
 }
 
 export class ConstantsService {
-  user: User | undefined;
-  users: User[] | undefined;
+  public user: User = new User();
+  public dispatchs: Dispatch[] = [];
   public textBody: string = "";
   public textSubject: string = "";
   public isSend:boolean = false;

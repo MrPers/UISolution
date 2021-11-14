@@ -12,7 +12,7 @@ export class CurrencyService {
 
   constructor(private http:HttpClient ) {}
 
-  getUser(id:number){
+  getUsers(id:number){
     if(id == 0)
       return this.http.get(URLpath + 'getuserall/');
     else
@@ -27,6 +27,10 @@ export class CurrencyService {
     return this.http.get(URLpath + 'statusletter/');
   };
 
+  deleteUser(id:number){
+    return this.http.get(URLpath + 'deleteuser/' + id);
+  };
+
   sendLetter(textBody: string, textSubject: string, users: User[] ){
 
     let rt: MailLetter = {
@@ -38,13 +42,26 @@ export class CurrencyService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     });
   };
+
+  getHistoryLette(user: User){
+    return this.http.get(URLpath + 'historylette/' + user.id);
+  };
+
+  addUser(user: User){
+    let formData = new FormData();
+    formData.append("Id", user.id.toString());
+    formData.append("Name", user.name);
+    formData.append("Surname", user.surname);
+    formData.append("Email", user.email);
+    return this.http.post(URLpath + "registuser", formData);
+  };
+
+  updateUser(user: User){
+    let formData = new FormData();
+    formData.append("Id", user.id.toString());
+    formData.append("Name", user.name);
+    formData.append("Surname", user.surname);
+    formData.append("Email", user.email);
+    return this.http.post(URLpath + "updateuser", formData);
+  };
 }
-
-
-    // let formData = new FormData();
-    // formData.append("letter", letter);
-    // formData.append("mails[]", mails[0].id);
-    // for (let index = 0; index < mails.length; index++) {
-    //   formData.append("mails[]", mails[index]);
-    // }
-    // return this.http.post(URLpath + "sendletter", formData);

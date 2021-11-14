@@ -36,3 +36,8 @@ button {
   cursor: pointer;
 }
 
+.close:after {
+  content:"\d7";
+  font-size:50px;
+  color:red;
+}

@@ -7,20 +7,27 @@ import { AdminRoutingModule } from './main-routing.module';
 import { TableComponent } from './pages/table/table.component';
 import { EmailComponent } from './pages/email/email.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ProgresComponent } from './pages/progres/progres.component';
+import { CreationUpdateUserComponent } from './pages/creation-update/creation-updateuser.component';
+import { HistoryLetteComponent } from './pages/history-lette/history-lette.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     MainComponent,
     EmailComponent,
     TableComponent,
-    ProgresComponent
+    ProgresComponent,
+    CreationUpdateUserComponent,
+    HistoryLetteComponent
   ],
   imports: [
+    // BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     AdminRoutingModule,
     MatDialogModule,
