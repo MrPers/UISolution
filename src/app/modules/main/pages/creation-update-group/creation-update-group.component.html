@@ -1,0 +1,12 @@
+<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+  <div>
+    <input class="form-control" name="name" formControlName="groupName" [(ngModel)]="group.name" />
+  </div>
+  <br>
+  <div class="form-group">
+    <button lass="btn btn-default" [disabled]="myForm.invalid">
+        Save
+    </button>
+  </div>
+</form>
+<link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />

@@ -1,12 +1,21 @@
+// import { Group } from 'src/app/services/constants.service';
 import { Injectable } from '@angular/core';
 
 export const URLpath = "https://localhost:44354/api/";
+// export const URLpath = "https://localhost:5001/api/";
+
 
 export class User{
   id:number = 0;
   name:string = "";
   surname:string = "";
   email:string = "";
+}
+
+export class StatusUser{
+  id:number = 0;
+  name:string = "";
+  status?:boolean = false;
 }
 
 export class Dispatch{
@@ -17,8 +26,9 @@ export class Dispatch{
 }
 
 export class Group{
-  id:number = 0;
-  name:string = "";
+  id: number = 0;
+  name: string = "";
+  usersId: number[] = [];
 }
 
 export interface MailLetter{
@@ -27,11 +37,20 @@ export interface MailLetter{
   users:User[];
 }
 
+export class UserGroup{
+  groupId: number = 0;
+  statusUsers: StatusUser[] = [];
+}
+
 export class ConstantsService {
-  public user: User = new User();
+  public groups: Group[] = [];
+  public users: User[] = [];
   public dispatchs: Dispatch[] = [];
+  public usersWithLetters: User[] = [];
   public textBody: string = "";
   public textSubject: string = "";
-  public isSend:boolean = false;
+  public user: User = new User();
+  public group: Group = new Group();
+  public userGroup: UserGroup = new UserGroup();
   constructor() { }
 }

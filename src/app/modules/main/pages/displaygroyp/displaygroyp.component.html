@@ -1,0 +1,12 @@
+<div class="table-group table-scroll">
+<table >
+  <tr>
+    <th>Name</th>
+    <th colspan="2"><button (click)="addGroup()">Creation Group</button></th></tr>
+  <tr *ngFor="let group of groups">
+    <td><button (click)="renameGroup(group)">{{group.name}}</button></td>
+    <td><button (click)="editListUser(group)">Edit list users</button></td>
+    <td style ="width: 40px;" ><button (click)="deleteGroup(group.id)"><div class="close"></div></button></td>
+  </tr>
+</table>
+</div>

@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ConstantsService } from 'src/app/services/constants.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ConstantsService, MailLetter } from 'src/app/services/constants.service';
 import { TableComponent } from '../table/table.component';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { CurrencyService } from 'src/app/services/currency.service';
+import { ProgresComponent } from '../progres/progres.component';
 
 
 @Component({
@@ -12,16 +14,33 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 })
 
 export class EmailComponent {
-  constructor(public constantsService: ConstantsService) { }
+  textBody: string ="";
+  textSubject: string ="";
 
-  public htmlContent: any;
+  constructor(
+    public dialog: MatDialog,
+    public constantsService: ConstantsService,
+    private currencyService:CurrencyService
+    ) { }
+
 
   ngOnInit(): void {
   }
 
   send(){
-    // debugger;
-    this.constantsService.isSend = true;
+    let mailLetter: MailLetter = {
+      textBody: this.textBody,
+      textSubject: this.textSubject,
+      users: this.constantsService.usersWithLetters
+    };
+
+    this.currencyService.sendLetter(mailLetter)
+    .subscribe((result : any) => {
+    });
+
+    if(this.constantsService.usersWithLetters.length > 1){
+      this.dialog.open(ProgresComponent);
+    }
   }
 
 }

@@ -4,8 +4,8 @@
       <div class="table-scroll">
         <button (click)="groupEditing()">Group editing</button>
         <table>
-          <tr *ngFor="let group of groups">
-            <td><button (click)="groupSelection(group.id)">{{group.name}}</button></td>
+          <tr *ngFor="let group of this.constantsService.groups">
+            <td><button (click)="onDisplayUsers(group.id)">{{group.name}}</button></td>
           </tr>
         </table>
       </div>
@@ -20,7 +20,9 @@
             <th><button (click)="sendLetterToEveryone()">Email</button></th>
             <th colspan="3"><button (click)="userAdd()">Creation User</button></th></tr>
           <tr *ngFor="let user of users">
-            <td>{{user.name}}</td>
+            <td>
+              {{user.name}}
+            </td>
             <td>{{user.surname}}</td>
             <td><button (click)="sendLetterToId(user)">{{user.email}}</button></td>
             <td><button (click)="userEditing(user)">User editing</button></td>

@@ -2,7 +2,6 @@
 .table-scroll {
   max-height:350px;
   overflow:auto;
-  min-width: 150px;
   background: black;
   border-spacing: 1px;
 }

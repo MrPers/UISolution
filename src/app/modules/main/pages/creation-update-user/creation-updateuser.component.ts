@@ -17,7 +17,8 @@ export class CreationUpdateUserComponent implements OnInit {
 
   constructor(
     public tableComponent: MatDialogRef<TableComponent>,
-    private constantsService:ConstantsService
+    public constantsService: ConstantsService,
+    private currencyService:CurrencyService
     ) {
       this.myForm = new FormGroup({
         "userName": new FormControl("", [
@@ -35,11 +36,20 @@ export class CreationUpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.constantsService.user;
-    // this.user.name = "this.constantsService.user";
   }
 
   submit(){
-    this.constantsService.user = this.user;
+    if(this.user.id == 0){
+      this.currencyService.addUser(this.user)
+      .subscribe((result : any) => {
+      });
+    }
+    else{
+      this.currencyService.updateUser(this.user)
+      .subscribe((result : any) => {
+      });
+    }
+    this.constantsService.user = new User();
     this.tableComponent.close();
   }
 

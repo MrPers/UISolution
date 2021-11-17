@@ -1,0 +1,14 @@
+<div class="table-scroll">
+  <table >
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+    <tr *ngFor="let user of statusUsers">
+      <td>{{user.name}}</td>
+      <td>
+        <input type="checkbox" [(ngModel)]="user.status">
+      </td>
+    </tr>
+  </table>
+</div>
+<button mat-dialog-close (click)="save()" lass="btn btn-default">Save</button>

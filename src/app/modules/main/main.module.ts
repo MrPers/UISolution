@@ -11,9 +11,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ProgresComponent } from './pages/progres/progres.component';
-import { CreationUpdateUserComponent } from './pages/creation-update/creation-updateuser.component';
 import { HistoryLetteComponent } from './pages/history-lette/history-lette.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CreationUpdateGroupComponent } from './pages/creation-update-group/creation-update-group.component';
+import { DisplaygroypComponent } from './pages/displaygroyp/displaygroyp.component';
+import { UsersinGroupComponent } from './pages/usersin-group/usersin-group.component';
+import { CreationUpdateUserComponent } from './pages/creation-update-user/creation-updateuser.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { BrowserModule } from '@angular/platform-browser';
     TableComponent,
     ProgresComponent,
     CreationUpdateUserComponent,
-    HistoryLetteComponent
+    HistoryLetteComponent,
+    CreationUpdateGroupComponent,
+    DisplaygroypComponent,
+    UsersinGroupComponent
   ],
   imports: [
     // BrowserModule,
