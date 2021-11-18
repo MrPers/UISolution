@@ -18,15 +18,6 @@ export class HistoryLetteComponent implements OnInit {
 
   ngOnInit(): void {
     this.dispatchs = this.constantsService.dispatchs
-    // this.currencyService.getHistoryLette(this.constantsService.user)
-    //   .subscribe((result : any) => {
-    //     console.log(result);
-    //     this.dispatchs;
-    //   });
-
   }
-
-
-
 
 }

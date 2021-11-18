@@ -31,7 +31,6 @@ export class DisplaygroypComponent implements OnInit {
 
 
   editListUser(group:Group){
-    debugger;
     let Id = 0;
     this.constantsService.userGroup.groupId = group.id;
     for (let item of this.constantsService.users) {

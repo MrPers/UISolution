@@ -14,8 +14,6 @@ import { ProgresComponent } from '../progres/progres.component';
 })
 
 export class EmailComponent {
-  textBody: string ="";
-  textSubject: string ="";
 
   constructor(
     public dialog: MatDialog,
@@ -29,8 +27,8 @@ export class EmailComponent {
 
   send(){
     let mailLetter: MailLetter = {
-      textBody: this.textBody,
-      textSubject: this.textSubject,
+      textBody: this.constantsService.textBody,
+      textSubject: this.constantsService.textSubject,
       users: this.constantsService.usersWithLetters
     };
 

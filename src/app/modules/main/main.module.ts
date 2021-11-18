@@ -31,7 +31,6 @@ import { CreationUpdateUserComponent } from './pages/creation-update-user/creati
     UsersinGroupComponent
   ],
   imports: [
-    // BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,

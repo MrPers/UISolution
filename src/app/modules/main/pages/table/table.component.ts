@@ -46,7 +46,6 @@ export class TableComponent implements OnInit {
 
   onDisplayUsers(id:number) {
     this.users =[];
-    // let user: User = new User();
 
     if(id == 0){
       for (let item of this.constantsService.users) {
@@ -91,7 +90,6 @@ export class TableComponent implements OnInit {
 
     this.currencyService.getGroupAll()
     .subscribe((result : any) => {
-      // debugger;
       for (let item of result) {
         this.constantsService.groups.push({
           id: item.id,
@@ -101,7 +99,6 @@ export class TableComponent implements OnInit {
           }),
         });
       };
-      // debugger;
 
     });
   }
