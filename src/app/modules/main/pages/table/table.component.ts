@@ -108,11 +108,12 @@ export class TableComponent implements OnInit {
     .subscribe((result : any) => {
       for (let item of result) {
         this.constantsService.dispatchs.push({
-          id: 1,
+          id: item.id,
           departureDate: (item.departureDate).split('T')[0]+ ' ' +((item.departureDate).split('T')[1]).split('.')[0],
           // departureDate: new Date ((item.departureDate).split('T')[0]+ ' ' +((item.departureDate).split('T')[1]).split('.')[0]),
           status: item.status,
-          UserId: 1
+          userId: item.userId,
+          letterId:item.letterId
         });
       };
     });
@@ -167,7 +168,8 @@ export class TableComponent implements OnInit {
   groupEditing(){
     this.dialog.open(DisplaygroypComponent)
     .afterClosed().subscribe(result => {
-      this.onDisplayUsers(0);
+      this.getKnowUsers();
+      // this.onDisplayUsers(0);
       this.onDisplayGroups();
     });
   }

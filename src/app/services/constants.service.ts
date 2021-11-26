@@ -18,10 +18,11 @@ export class StatusUser{
 }
 
 export class Dispatch{
-  id: number | undefined;
+  id: number  = 0;
   departureDate: any;
   status: boolean = false;
-  UserId: number | undefined;
+  userId: number  = 0;
+  letterId: number = 0;
 }
 
 export class Group{
@@ -30,10 +31,10 @@ export class Group{
   usersId: number[] = [];
 }
 
-export interface MailLetter{
-  textBody: string;
-  textSubject: string;
-  users:User[];
+export class MailLetter{
+  textBody: string = "";
+  textSubject: string = "";
+  usersId:number[] = [];
 }
 
 export class UserGroup{

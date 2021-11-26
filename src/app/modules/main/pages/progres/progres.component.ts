@@ -21,7 +21,9 @@ export class ProgresComponent implements OnInit {
         this.status = result;
       });
 
-    setTimeout(
+      console.log(this.status);
+
+      setTimeout(
       ()=>{
         if(this.status == 100){
           this.tableComponent.close()

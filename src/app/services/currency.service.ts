@@ -13,27 +13,31 @@ export class CurrencyService {
   constructor(private http:HttpClient ) {}
 
   getHistoryLette(user: User){
-    return this.http.get(URLpath + 'historylette/' + user.id);
+    return this.http.get(URLpath + 'get-history-lette/' + user.id);
+  };
+
+  getLette(id: number){
+    return this.http.get(URLpath + 'get-lette/' + id);
   };
 
   getUsersAll(){
-    return this.http.get(URLpath + 'getuserall/');
+    return this.http.get(URLpath + 'get-users-all/');
   };
 
   getGroupAll(){
-    return this.http.get(URLpath + 'getgroupall/');
+    return this.http.get(URLpath + 'get-groups-all/');
   };
 
   deleteUser(id:number){
-    return this.http.delete(URLpath + 'deleteuser/' + id);
+    return this.http.delete(URLpath + 'delete-user/' + id);
   };
 
   statusLetter(){
-    return this.http.get(URLpath + 'statusletter/');
+    return this.http.get(URLpath + 'status-letter/');
   };
 
   sendLetter(mailLetter: MailLetter ){
-    return this.http.post(URLpath + 'sendletter', mailLetter, {
+    return this.http.post(URLpath + 'send-letter', mailLetter, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     });
   };
@@ -44,7 +48,7 @@ export class CurrencyService {
     formData.append("Name", user.name);
     formData.append("Surname", user.surname);
     formData.append("Email", user.email);
-    return this.http.post(URLpath + "registuser", formData);
+    return this.http.post(URLpath + "regist-user", formData);
   };
 
   updateUser(user: User){
@@ -53,35 +57,35 @@ export class CurrencyService {
     formData.append("Name", user.name);
     formData.append("Surname", user.surname);
     formData.append("Email", user.email);
-    return this.http.post(URLpath + "updateuser", formData);
+    return this.http.post(URLpath + "update-user", formData);
   };
 
   deleteGroup(id:number){
-    return this.http.delete(URLpath + 'deletegroup/' + id);
+    return this.http.delete(URLpath + 'delete-group/' + id);
   };
 
   updateGroup(group: Group){
     let formData = new FormData();
     formData.append("Id", group.id.toString());
     formData.append("Name", group.name);
-    return this.http.post(URLpath + "updategroup", formData);
+    return this.http.post(URLpath + "update-group", formData);
   };
 
   addGroup(group: Group){
     let formData = new FormData();
     formData.append("Id", group.id.toString());
     formData.append("Name", group.name);
-    return this.http.post(URLpath + "registgroup", formData);
+    return this.http.post(URLpath + "regist-group", formData);
   };
 
   deleteUsersinGroup(userGroup: {idGroup:number, idUsers:number[]}){
-    return this.http.post(URLpath + 'deletestatususergroup', userGroup, {
+    return this.http.post(URLpath + 'delete-user-group', userGroup, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     });
   };
 
   addUsersinGroup(userGroup: {idGroup:number, idUsers:number[]}){
-    return this.http.post(URLpath + 'addstatususergroup', userGroup, {
+    return this.http.post(URLpath + 'add-user-group', userGroup, {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     });
   };

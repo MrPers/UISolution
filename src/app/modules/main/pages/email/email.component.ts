@@ -26,10 +26,15 @@ export class EmailComponent {
   }
 
   send(){
+    let usersId:number[]=[];
+    this.constantsService.usersWithLetters.forEach(element => {
+      usersId.push(element.id);
+    });
+
     let mailLetter: MailLetter = {
       textBody: this.constantsService.textBody,
       textSubject: this.constantsService.textSubject,
-      users: this.constantsService.usersWithLetters
+      usersId: usersId
     };
 
     this.currencyService.sendLetter(mailLetter)

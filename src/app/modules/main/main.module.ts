@@ -17,6 +17,7 @@ import { CreationUpdateGroupComponent } from './pages/creation-update-group/crea
 import { DisplaygroypComponent } from './pages/displaygroyp/displaygroyp.component';
 import { UsersinGroupComponent } from './pages/usersin-group/usersin-group.component';
 import { CreationUpdateUserComponent } from './pages/creation-update-user/creation-updateuser.component';
+import { LetterComponent } from './pages/letter/letter.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreationUpdateUserComponent } from './pages/creation-update-user/creati
     HistoryLetteComponent,
     CreationUpdateGroupComponent,
     DisplaygroypComponent,
-    UsersinGroupComponent
+    UsersinGroupComponent,
+    LetterComponent
   ],
   imports: [
     FormsModule,

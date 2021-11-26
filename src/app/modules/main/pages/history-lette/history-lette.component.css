@@ -1,4 +1,8 @@
 
+* {
+  font: 12pt sans-serif;
+}
+
 .table-scroll {
   max-height:350px;
   overflow:auto;
@@ -15,4 +19,12 @@ table{
   background: white;
   padding: 5px;
   text-align:  center;
+}
+
+button {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
 }
