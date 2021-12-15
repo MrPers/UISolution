@@ -10,13 +10,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }   from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './modules/main/main.module';
-import { TableComponent } from './modules/main/pages/table/table.component';
-
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+import { CallApiComponent } from './call-api/call-api.component';
+import { RefreshComponent } from './refresh/refresh.component';
 
 @NgModule({
   declarations: [
+    RefreshComponent,
     AppComponent,
     ErrorComponent,
+    LogoutComponent,
+    AuthCallbackComponent,
+    CallApiComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,8 @@ import { TableComponent } from './modules/main/pages/table/table.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MainModule
+    MainModule,
+    
   ],
   providers: [
     CurrencyService,
