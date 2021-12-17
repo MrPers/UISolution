@@ -21,7 +21,7 @@ export class ProgresComponent implements OnInit {
         this.status = result;
       });
 
-      console.log(this.status);
+      // console.log(this.status);
 
       setTimeout(
       ()=>{

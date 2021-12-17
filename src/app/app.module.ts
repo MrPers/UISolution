@@ -10,20 +10,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }   from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './modules/main/main.module';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
-import { CallApiComponent } from './call-api/call-api.component';
-import { RefreshComponent } from './refresh/refresh.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service';
+import { RefreshComponent } from './pages/refresh/refresh.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
-    RefreshComponent,
     AppComponent,
     ErrorComponent,
+    RefreshComponent,
     LogoutComponent,
     AuthCallbackComponent,
-    CallApiComponent,
     LoginComponent
   ],
   imports: [
@@ -34,11 +34,12 @@ import { RefreshComponent } from './refresh/refresh.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MainModule,
-    
   ],
   providers: [
     CurrencyService,
     ConstantsService,
+    AuthGuardService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

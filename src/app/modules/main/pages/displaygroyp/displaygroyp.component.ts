@@ -6,6 +6,7 @@ import { TableComponent } from '../table/table.component';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { CreationUpdateGroupComponent } from '../creation-update-group/creation-update-group.component';
 import { UsersinGroupComponent } from '../usersin-group/usersin-group.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-displaygroyp',
@@ -17,6 +18,7 @@ export class DisplaygroypComponent implements OnInit {
   groups: Group[] = [];
 
   constructor(
+    private router: Router,
     public dialog: MatDialog,
     public tableComponent: MatDialogRef<TableComponent>,
     public constantsService: ConstantsService,
@@ -73,6 +75,7 @@ export class DisplaygroypComponent implements OnInit {
     this.dialog.open(CreationUpdateGroupComponent)
     .afterClosed().subscribe(result => {
       this.tableComponent.close();
+      // this.router.navigate(['/']);
     });
 
   }
@@ -81,6 +84,7 @@ export class DisplaygroypComponent implements OnInit {
     this.currencyService.deleteGroup(id)
     .subscribe((result : any) => {
       this.tableComponent.close();
+      // this.router.navigate(['/auth-callback']);
     });
 
   }

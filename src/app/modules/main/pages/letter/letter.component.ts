@@ -19,7 +19,7 @@ export class LetterComponent implements OnInit {
     // debugger;
     this.textSubject = this.constantsService.textSubject;
     this.textBody = this.constantsService.textBody;
-    console.log(this.textBody);
+    // console.log(this.textBody);
   }
 
 }

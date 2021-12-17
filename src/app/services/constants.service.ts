@@ -1,8 +1,37 @@
-import { Injectable } from '@angular/core';
+import { UserManagerSettings } from "oidc-client";
+import * as Oidc from 'oidc-client';
 
+export const Authority = "https://localhost:10001";
+export const Silent_redirect_uri = "http://localhost:4200/refresh";
+export const Redirect_uri = 'http://localhost:4200/auth-callback';
+export const Post_logout_redirect_uri = 'http://localhost:4200/';
+export const Response_type = "code";
+export const AutomaticSilentRenew = true;
+export const FilterProtocolClaims = true;
+export const LoadUserInfo = true;
+export const Scope = "openid profile Order";
+export const Client_id = 'client_angular_id';
 export const URLpath = "https://localhost:44354/api/";
+
 // export const URLpath = "https://localhost:5001/api/";
 
+
+export function getClientSettings(): UserManagerSettings {
+  return {
+    userStore: new Oidc.WebStorageStateStore({ store: window.localStorage }), //чтоб хронилась сесия localStore
+    authority: Authority,
+    silent_redirect_uri : Silent_redirect_uri,
+    redirect_uri: Redirect_uri,
+    post_logout_redirect_uri: Post_logout_redirect_uri,
+    response_type: Response_type,
+    automaticSilentRenew: AutomaticSilentRenew, //указывающий, должна ли быть автоматическая попытка обновить токен доступа до истечения срока его действия
+    scope: Scope,
+    client_id: Client_id,
+    filterProtocolClaims: FilterProtocolClaims, //следует ли удалять утверждения протокола OIDC из profile
+    loadUserInfo: LoadUserInfo // загрузкой дополнительных идентификационных данных, чтобы заполнить пользователя profile
+  };
+
+}
 
 export class User{
   id:number = 0;

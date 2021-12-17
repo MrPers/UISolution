@@ -168,9 +168,9 @@ export class TableComponent implements OnInit {
   groupEditing(){
     this.dialog.open(DisplaygroypComponent)
     .afterClosed().subscribe(result => {
-      this.getKnowUsers();
+      this.ngOnInit();
       // this.onDisplayUsers(0);
-      this.onDisplayGroups();
+      // this.onDisplayGroups();
     });
   }
 

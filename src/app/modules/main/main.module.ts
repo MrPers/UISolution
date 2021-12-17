@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CurrencyService } from 'src/app/services/currency.service';
-import { ConstantsService } from 'src/app/services/constants.service';
 import { MainComponent } from './main.component';
 import { AdminRoutingModule } from './main-routing.module';
 import { TableComponent } from './pages/table/table.component';
@@ -18,9 +16,17 @@ import { DisplaygroypComponent } from './pages/displaygroyp/displaygroyp.compone
 import { UsersinGroupComponent } from './pages/usersin-group/usersin-group.component';
 import { CreationUpdateUserComponent } from './pages/creation-update-user/creation-updateuser.component';
 import { LetterComponent } from './pages/letter/letter.component';
+import { AuthCallbackComponent } from '../../pages/auth-callback/auth-callback.component';
+import { RefreshComponent } from '../../pages/refresh/refresh.component';
+import { LogoutComponent } from '../../pages/logout/logout.component';
+import { CurrencyService } from '../../services/currency.service';
+import { ConstantsService } from '../../services/constants.service';
 
 @NgModule({
   declarations: [
+    // RefreshComponent,
+    // LogoutComponent,
+    // AuthCallbackComponent,
     MainComponent,
     EmailComponent,
     TableComponent,

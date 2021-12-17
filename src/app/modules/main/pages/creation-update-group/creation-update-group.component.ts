@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ConstantsService } from 'src/app/services/constants.service';
-import { TableComponent } from '../table/table.component';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { DisplaygroypComponent } from '../displaygroyp/displaygroyp.component';
 
