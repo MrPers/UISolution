@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthCallbackComponent } from './pages/auth-callback/auth-callback.component';
+import { CallApiComponent } from './pages/call-api/call-api.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
@@ -24,11 +25,11 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent,
   },
-  // {
-  //   path: 'call-api',
-  //   component: CallApiComponent,
-  //   canActivate: [AuthGuardService]
-  // },
+  {
+    path: 'call-api',
+    component: CallApiComponent,
+    // canActivate: [AuthGuardService]
+  },
   {
     path: '',
     loadChildren: () => import('./modules/main/main.module').then((el)=>el.MainModule),

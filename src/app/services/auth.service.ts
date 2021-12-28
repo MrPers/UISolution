@@ -1,6 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as Oidc from 'oidc-client';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
 import {getClientSettings } from './constants.service';
 

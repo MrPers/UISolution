@@ -7,7 +7,8 @@ export const Redirect_uri = 'http://localhost:4200/auth-callback';
 export const Post_logout_redirect_uri = 'http://localhost:4200/';
 export const Response_type = "code";
 export const AutomaticSilentRenew = true;
-export const FilterProtocolClaims = true;
+// export const FilterProtocolClaims = false;  //
+// export const MergeClaims = true;  //
 export const LoadUserInfo = true;
 export const Scope = "openid profile Order";
 export const Client_id = 'client_angular_id';
@@ -27,8 +28,11 @@ export function getClientSettings(): UserManagerSettings {
     automaticSilentRenew: AutomaticSilentRenew, //указывающий, должна ли быть автоматическая попытка обновить токен доступа до истечения срока его действия
     scope: Scope,
     client_id: Client_id,
-    filterProtocolClaims: FilterProtocolClaims, //следует ли удалять утверждения протокола OIDC из profile
-    loadUserInfo: LoadUserInfo // загрузкой дополнительных идентификационных данных, чтобы заполнить пользователя profile
+    loadUserInfo: LoadUserInfo, // загрузкой дополнительных идентификационных данных, чтобы заполнить пользователя profile
+    // mergeClaims: MergeClaims,
+    // filterProtocolClaims: FilterProtocolClaims, //следует ли удалять утверждения протокола OIDC из profile
+    // checkSessionInterval: 50000, //Интервал в мс для проверки сеанса пользователя
+    // silentRequestTimeout: 50000, //количество миллисекунд ожидания возврата беззвучного
   };
 
 }

@@ -23,6 +23,7 @@ export class CurrencyService {
 
   getUsersAll(){
     return this.http.get(URLpath + 'get-users-all/', { headers: this.authService.getAuthorizationHeaderValue()});
+    // return this.http.get(URLpath + 'get-users-all/', { headers: this.authService.getAuthorizationHeaderValue()});
   };
 
   getGroupAll(){
