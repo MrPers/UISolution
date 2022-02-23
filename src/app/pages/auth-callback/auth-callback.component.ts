@@ -15,6 +15,7 @@ export class AuthCallbackComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit() {
+    debugger;
     this.authService.completeAuthentication()
     .then(() =>{
       this.router.navigate(['/']);
